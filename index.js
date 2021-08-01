@@ -1,8 +1,6 @@
 const cool = require("cool-ascii-faces");
 const express = require('express')
 const app = express();
-const axios = require("axios").default;
-const bodyParser  = require('body-parser');
 // const jsdom = require('jsdom');
 // const $ = require('jquery')(new jsdom.JSDOM().window);
 const path = require('path');
@@ -12,7 +10,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set("view options", {layout: false});
 app.use('/', express.static(__dirname));
-app.use(bodyParser.json());
+app.use(express.json());
 
 
 var textdata = "null";
