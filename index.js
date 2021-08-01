@@ -28,14 +28,12 @@ app.post("/NemoText", (req, res) => {
 
 app.get("/NemoText", (req, res) => {
   // send returns text
-  res.set('Content-Type', 'text/html')
   res.send(textdata);
   res.end();
   
 })
 
 app.get("/cool", (req, res) => {
-  res.set('Content-Type', 'text/html');
   res.render("pages/cool");
 });
 
