@@ -9,15 +9,16 @@ const start = (say, sendButton) => {
   axios({
     method: "get",
     baseURL: "https://limitless-hamlet-40360.herokuapp.com",
-    url: "/NemoText",
+    url: "/NemoText"
   })
   .then((result) => {
     say("Recieved data");
-    let data = result.data;
-    payload["text"] = data["text"];
+    // let data = result.data;
+    // payload["text"] = data["text"];
   })
-  .catch((err) => {
+  .catch((error) => {
     say("Sorry, there was an error");
+    say(error);
   });
   sendButton("Start?", options);
 };

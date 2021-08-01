@@ -20,13 +20,19 @@ app.use(cors()); // <---- use cors middleware
 
 
 var textdata = "null";
-app.post("/NemoText", (req, res) => {
 
+app.post("/NemoText", (req, res) => {
   let text = req.body["text"];
-  // textdata = text;
+  textdata = text;
   console.log(text);
   res.end();
 }); 
+
+app.get("/NemoText", (req, res) => {
+  req.body["text"] = textdata;
+  console.log("TEXT BODY: " + req.body["text"]);
+  res.end();
+})
 
 app.get("/cool", (req, res) => {
   res.render("pages/cool");
