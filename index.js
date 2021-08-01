@@ -10,7 +10,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set("view options", {layout: false});
 app.use('/', express.static(__dirname));
-app.use(express.json());
+app.use(expresss.json());
 
 
 var textdata = "null";
@@ -22,7 +22,7 @@ app.post("/cool", (req, res) => {
   res.end();
 }); 
 
-app.get("/cool", (req, res) => {
+app.get("pages/cool", (req, res) => {
   res.render("pages/cool", {data: textdata});
 });
 
