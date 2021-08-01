@@ -9,14 +9,19 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get("/cool", (req, res) => res.send(cool()))
+  .get("/cool", (req, res) => res.render("pages/cool"))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-axios.post("/cool", {
+axios.post("limitless-hamlet-40360.herokuapp.com/cool", {
   coolface: "wewe"
+}, {
+  headers: {
+    "Content-Type": "application/json"
+  }
 })
-.then((result) => { console.log(result); })
-.catch((err) => { console.log(err); });
+.then((result) => { console.log("posted"); })
+.catch((error) => { console.log(error); });
+
 
 // axios({
 //   method: "post",
