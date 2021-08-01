@@ -12,7 +12,7 @@ express()
   .get("/cool", (req, res) => res.render("pages/cool"))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-axios.post("limitless-hamlet-40360.herokuapp.com/cool", {
+axios.post("pages/cool", {
   coolface: "wewe"
 }, {
   headers: {
