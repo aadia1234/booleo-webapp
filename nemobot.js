@@ -18,7 +18,7 @@ const state = (payload, say, sendButton) => {
       url: "/NemoText"
     })
     .then((result) => {
-      say("Data recieved: " + result.data["text"]);
+      say("Data recieved: " + result);
     })
     .catch((error) => {
       say("Sorry, there was an error");

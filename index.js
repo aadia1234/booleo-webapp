@@ -23,7 +23,6 @@ var textdata = "null";
 
 app.post("/NemoText", (req, res) => {
   textdata = req.body["text"];
-  console.log(text);
   res.end();
 }); 
 
