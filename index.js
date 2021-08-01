@@ -19,7 +19,7 @@ app.use(express.json());
 
 var textdata = "null";
 
-app.post("/cool", (req, res) => {
+app.post("/NemoText", (req, res) => {
   let text = req.body["text"];
   textdata = text;
   console.log("POST");
