@@ -18,16 +18,16 @@ app.use(express.json());
 
 
 var textdata = "null";
-
 app.post("/NemoText", (req, res) => {
+
   let text = req.body["text"];
-  textdata = text;
+  // textdata = text;
   console.log(text);
   res.end();
 }); 
 
 app.get("/cool", (req, res) => {
-  res.render("pages/cool", {data: textdata});
+  res.render("pages/cool");
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

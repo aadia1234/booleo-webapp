@@ -9,15 +9,28 @@
 <body>
   <h1>Hello World!</h1>
   <h2>This has some data, check it out!</h2>
-
-  <div id="showMessage">
-    <!-- The updated data will show here -->
-  </div>
+  <input id="textInput"></input>
+  <button id="submit">Submit text to nemobot</button>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-  var message = "<%- data %>";
-  var newdiv1 = ( "<p>" + message + "</p>" );
-  $("#showMessage").append(newdiv1);
+
+  $("#submit").on("click", () => {
+    let inputText = $("#textInput").val();
+    axios({
+      method: "post",
+      baseURL: "https://limitless-hamlet-40360.herokuapp.com",
+      url: "/NemoText",
+      "Content-Type": "application/json",
+      data: {
+        text: inputText
+      }
+    }, {
+      headers: {"Access-Control-Allow-Origin": "*"}
+    })
+    .then((result) => { console.log("Data sent!"); })
+    .catch((err) => { console.log("Sorry, there was an error"); });
+  })
 </script>
 </html>
