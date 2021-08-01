@@ -15,9 +15,11 @@ app
 
 
 var textdata = "null";
+
 app.post("/cool", (req, res) => {
   let text = req.body["text"];
   textdata = text;
+  console.log("POST");
   res.end();
 }); 
 
