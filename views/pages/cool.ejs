@@ -9,5 +9,25 @@
 <body>
   <h1>Hello World!</h1>
   <h2>This has some data, check it out!</h2>
+  <button id="getData">GET DATA</button>
+  <button id="pushData">PUSH DATA</button>
+
+  <div id="showMessage">
+    <!-- The updated data will show here -->
+  </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#getData").click(() => {
+    console.log("get data clicked!");
+  });
+
+  $("#pushData").click(() => {
+    console.log("push data clicked!");
+  });
+
+  var message = "<%- data %>";
+  var newdiv1 = ( "<p>" + message + "</p>" );
+  $("#showMessage").append(newdiv1);
+</script>
 </html>
