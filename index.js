@@ -2,6 +2,7 @@ const cool = require("cool-ascii-faces");
 const express = require('express')
 const app = express();
 const axios = require("axios").default;
+const bodyParser  = require('body-parser');
 // const jsdom = require('jsdom');
 // const $ = require('jquery')(new jsdom.JSDOM().window);
 const path = require('path');
