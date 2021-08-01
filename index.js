@@ -10,7 +10,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set("view options", {layout: false});
 app.use('/', express.static(__dirname));
-app.use(expresss.json());
+app.use(express.json());
 
 
 var textdata = "null";
