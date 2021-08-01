@@ -2,6 +2,7 @@ const cool = require("cool-ascii-faces");
 const express = require('express')
 const app = express();
 const axios = require("axios").default;
+const cors = require("cors");
 // const jsdom = require('jsdom');
 // const $ = require('jquery')(new jsdom.JSDOM().window);
 const path = require('path');
@@ -15,6 +16,7 @@ app
 
 
 app.use(express.json());
+app.use(cors()); // <---- use cors middleware
 
 
 var textdata = "null";
