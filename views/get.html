@@ -1,0 +1,37 @@
+// The html file showing data received from `app.js`.
+// Use EJS(Embedded JavaScript templates) to update the received data.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Nemo Bot Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<section>
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>The newest message</h2>
+            <p class="text-muted">You may need to refresh the page to check the newest message.</p>
+            <hr>
+        </div>
+        <div class="container text-center">
+            <div id="showMessage">
+                <!-- The updated data will show here -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var message = "<%- data %>";
+    var newdiv1 = ( "<p>" + message + "</p>" );
+    $("#showMessage").append(newdiv1);
+</script>
+</body>
+</html>
