@@ -2,7 +2,6 @@ const cool = require("cool-ascii-faces");
 const express = require('express')
 const app = express();
 const axios = require("axios").default;
-const cors = require("cors");
 // const jsdom = require('jsdom');
 // const $ = require('jquery')(new jsdom.JSDOM().window);
 const path = require('path');
@@ -16,23 +15,19 @@ app
 
 
 app.use(express.json());
-app.use(cors()); // <---- use cors middleware
 
 
 var textdata = "null";
 
 app.post("/NemoText", (req, res) => {
-  textdata = req.body["text"];
+  let text = req.body["text"];
+  textdata = text;
+  console.log(text);
   res.end();
 }); 
 
-app.get("/NemoText", (req, res) => {
-  // send returns text
-  res.send(textdata);
-})
-
 app.get("/cool", (req, res) => {
-  res.render("pages/cool");
+  res.render("pages/cool", {data: textdata});
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
