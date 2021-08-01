@@ -4,30 +4,28 @@ const axios = require('axios');
 const options = [{title: "Yes", payload: "start"}, "No"];
 
 const start = (say, sendButton) => {
-  let payload = {};
-
-  axios({
-    method: "get",
-    baseURL: "https://limitless-hamlet-40360.herokuapp.com",
-    url: "/NemoText"
-  })
-  .then((result) => {
-    say("Recieved data");
-    // let data = result.data;
-    // payload["text"] = data["text"];
-  })
-  .catch((error) => {
-    say("Sorry, there was an error");
-    say(error);
-  });
   sendButton("Start?", options);
 };
 
 const state = (payload, say, sendButton) => {
-  say("checkout this website for more info: https://limitless-hamlet-40360.herokuapp.com/cool").then(() => {
-    say(payload["text"]);
-  });
-  sendButton("Play Again?", options);
+
+  if (payload == "start") {
+    say("checkout this website for more info: https://limitless-hamlet-40360.herokuapp.com/cool");
+    
+    axios({
+      method: "get",
+      baseURL: "https://limitless-hamlet-40360.herokuapp.com",
+      url: "/NemoText"
+    })
+    .then((result) => {
+      say("Data recieved: " + result.data["text"]);
+    })
+    .catch((error) => {
+      say("Sorry, there was an error");
+    });
+
+    sendButton("Play Again?", options);
+  }
 };
 
 module.exports = {
