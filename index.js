@@ -15,7 +15,7 @@ app.use(expresss.json());
 
 var textdata = "null";
 
-app.post("/cool", (req, res) => {
+app.post("pages/cool", (req, res) => {
   let text = req.body["text"];
   textdata = text;
   console.log("POST");
