@@ -1,4 +1,3 @@
-const cool = require("cool-ascii-faces");
 const express = require('express')
 const app = express();
 const axios = require("axios").default;
@@ -12,7 +11,7 @@ app
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
+  .get('/', (req, res) => res.render('pages/home'))
 
 
 app.use(express.json());
@@ -30,9 +29,5 @@ app.get("/NemoText", (req, res) => {
   // send returns text
   res.send(textdata);
 })
-
-app.get("/cool", (req, res) => {
-  res.render("pages/cool");
-});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

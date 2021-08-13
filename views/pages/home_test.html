@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../../machine_learning/script.js"></script>
+    <!-- this line removes any default padding and style. you might only need one of these values set. -->
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+	    /* Create three equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 28%;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		function setMyMove(value) {
+      $("#my-move").text("My move: " + value);
+		}
+		
+		function setAgentMove(value) {
+      $("#agent-move").text("Agent's move: " + chooseMove(value));
+		}
+  </script>
+
+	<!-- Create button for ROCK PAPER SCISSORS and set a function to be used onclick with this.value as the param. Call the chooseMove() function.> -->
+  <div class="buttons">
+    <button class="btn btn-outline-primary" value="ROCK" onclick="setMyMove(this.value); setAgentMove(this.value);">ROCK</button>
+    <button class="btn btn-outline-primary" value="PAPER" onclick="setMyMove(this.value); setAgentMove(this.value);">PAPER</button>
+    <button class="btn btn-outline-primary" value="SCISSORS" onclick="setMyMove(this.value); setAgentMove(this.value);">SCISSORS</button>
+  </div>
+	<!-- Set the player move -->
+  <h1 id="my-move">My move: </h1>
+
+	<!-- Create buttons for positive and negative reward and call the train function with a reward value  -->
+  <div class="buttons">
+    <button class="btn btn-outline-success" value="POSITIVE" onclick="train(100)">Correct</button>
+    <button class="btn btn-outline-danger" value="NEGATIVE" onclick="train(-100)">Incorrect</button>
+  </div>
+	<!-- Set the agent move -->
+  <h1 id="agent-move">Agent's move: </h1>
+
+	<!-- Create the radio buttons for train and evaluate and name it phase. -->
+  <!-- <div id="ai-options">
+    <input type="radio" id="train" name="phase">
+    <label for="train">Train</label>
+    <br>
+    <input type="radio" id="evaluate" name="phase">
+    <label for="evaluate">Evaluate</label>
+  </div> -->
+
+  <input type="checkbox" class="btn-check" id="toggle-ai" autocomplete="off">
+  <label class="btn btn-primary" for="toggle-ai" id="ai-label">Train</label>
+
+	<div class="row">
+		<div id="div1" class="column"></div>
+		<div id="div2" class="column"></div>
+		<div id="div3" class="column"></div>
+	</div>
+
+	<script type="text/javascript">
+  $(document).ready(() => {
+    init();    
+  });
+
+  $("#ai-label").click(() => {
+    console.log($("#toggle-ai").is(":checked"));
+    if ($("#toggle-ai").is(":checked")) {
+      $("#ai-label").text("Train");
+    } else {      
+      $("#ai-label").text("Evaluate");
+    }
+  })
+
+  </script>
+</body>
+
+</html>
